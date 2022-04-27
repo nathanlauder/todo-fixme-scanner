@@ -1,1 +1,8 @@
 /target
+
+# testing normal directories
+src/testing/
+
+# test hidden directories
+.husky/
+.env
