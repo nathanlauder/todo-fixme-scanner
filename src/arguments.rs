@@ -5,11 +5,17 @@ use structopt::StructOpt;
 use std::path::PathBuf;
 
 #[derive(StructOpt, Debug)]
-#[structopt(name = "FIXME & TODO list scanner")]
+#[structopt(name = "\nFIXTODO Scanner",
+            about="\nThis package can be used to recursively scan all files in a project\nto create a centralized list of TODOs and FIXMEs.  They can then be displayed\nin an interactive list format specific to a file.")]
 pub struct cliArgs {
-  /// Ignore all hidden files and folders
-  #[structopt (long="--ignore-hidden")]
-  pub ignoreHidden: bool,
+
+  /// Ignore all hidden files and folders, default to true
+  #[structopt (long="--scan-hidden")]
+  pub showHidden: bool,
+
+  /// Scan files regardless of gitignore status, default to false
+  #[structopt (long="--scan-ignored")]
+  pub scanGitIgnore: bool,
 
   /// Provide a list of space separated directories to ignore (.git dirName).
   /// This dir name should be just the name of the top dir to ignore.
@@ -21,18 +27,17 @@ pub struct cliArgs {
   #[structopt(short, long, default_value = ".", parse(from_os_str))]
   pub path: PathBuf,
 
-  /// Ignore FIXMEs
-  #[structopt(long)]
+  /// Ignore FIXMEs, default to false
+  #[structopt(long, short="-f")]
   pub noFixme: bool,
 
-  /// Ignore TODOs
-  #[structopt(long)]
+  /// Ignore TODOs, default to false
+  #[structopt(long, short="-t")]
   pub noTodo: bool,
 
-  // The number of occurrences of the `v/verbose` flag
-  /// Verbose mode (-v, -vv, -vvv, etc.)
-  #[structopt(short, long, parse(from_occurrences))]
-  pub verbose: u8,
+  /// Show scanner in action
+  #[structopt(short, long)]
+  pub verbose: bool,
 }
 
 pub fn getArguments() -> cliArgs {
