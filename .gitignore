@@ -1,1 +1,8 @@
 /target
+
+# testing normal directories
+src/dirTest/gitignoretest/
+
+# test hidden directories
+.husky/
+.env
