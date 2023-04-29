@@ -5,7 +5,7 @@ use structopt::StructOpt;
 use std::path::PathBuf;
 
 #[derive(StructOpt, Debug)]
-#[structopt(name = "\nFIXTODO Scanner",
+#[structopt(name = "\nTODO & FIXME Scanner",
             about="\nThis package can be used to recursively scan all files in a project\nto create a centralized list of TODOs and FIXMEs.  They can then be displayed\nin an interactive list format specific to a file.")]
 pub struct cliArgs {
 
@@ -29,11 +29,11 @@ pub struct cliArgs {
 
   /// Ignore FIXMEs, default to false
   #[structopt(long, short="-f")]
-  pub noFixme: bool,
+  pub onlyFixme: bool,
 
   /// Ignore TODOs, default to false
   #[structopt(long, short="-t")]
-  pub noTodo: bool,
+  pub onlyTodo: bool,
 
   /// Show scanner in action
   #[structopt(short, long)]
