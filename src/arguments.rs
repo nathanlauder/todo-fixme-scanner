@@ -3,9 +3,8 @@
 extern crate structopt;
 use structopt::StructOpt;
 use std::path::PathBuf;
-
 #[derive(StructOpt, Debug)]
-#[structopt(name = "\nTODO & FIXME Scanner",
+#[structopt(name = "TODO & FIXME Scanner",
             about="\nThis package can be used to recursively scan all files in a project\nto create a centralized list of TODOs and FIXMEs.  They can then be displayed\nin an interactive list format specific to a file.")]
 pub struct cliArgs {
 
@@ -27,11 +26,11 @@ pub struct cliArgs {
   #[structopt(short, long, default_value = ".", parse(from_os_str))]
   pub path: PathBuf,
 
-  /// Ignore FIXMEs, default to false
+  /// Only scan FIXMEs, default to false
   #[structopt(long, short="-f")]
   pub onlyFixme: bool,
 
-  /// Ignore TODOs, default to false
+  /// Only scan TODOs, default to false
   #[structopt(long, short="-t")]
   pub onlyTodo: bool,
 
