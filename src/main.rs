@@ -54,8 +54,6 @@ fn isImageFile(fileExtension: Option<&OsStr>) -> bool {
       return false;
     }
   }
-  
-  
 }
 
 fn filter_files(entries: Vec<DirEntry>) -> Vec<DirEntry> {
